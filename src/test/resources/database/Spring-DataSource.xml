@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">-->
+        
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">        
+        
+    <bean id="dataSourceAfiliaciones" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+        <property name="url" value="jdbc:sqlserver://10.44.58.135:1433;DatabaseName=AFILIACIONES;autoReconnect=true " />
+        <property name="username" value="componentes" />
+        <property name="password" value="**s0l1dd4**" />
+    </bean>
+	
+    <bean id="dataSourceConfiguration" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+        <property name="url" value="jdbc:sqlserver://10.44.58.135:1433;DatabaseName=PARAMETERS;autoReconnect=true " />
+        <property name="username" value="componentes" />
+        <property name="password" value="**s0l1dd4**" />
+    </bean>
+	
+</beans>

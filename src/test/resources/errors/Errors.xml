@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+        
+    <!--Propiedades-->
+    <bean id="errorsBean" class="com.credibanco.commonsutils.properties.ErrorPropertiesFromDB">
+        <constructor-arg ref="errorConfiguration" />
+    </bean>
+    
+    <bean id="errorConfiguration" class="org.apache.commons.configuration.DatabaseConfiguration">
+        <constructor-arg>
+            <ref bean="dataSourceConfiguration" />
+        </constructor-arg>
+        <!--DB Table-->
+        <constructor-arg value="ERRORCODES" />
+        <!--DB Name Configuration Column-->
+        <constructor-arg value="NAME_SPACE" />
+        <!--DB Key Column-->
+        <constructor-arg value="CODE_PROPERTY" />
+        <!--DB Value Column-->
+        <constructor-arg value="DESCRIPTION_PROPERTY" />
+        <!--DB Name Configuration-->
+        <constructor-arg value="General" />
+    </bean>
+
+</beans>

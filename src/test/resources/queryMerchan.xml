@@ -1,0 +1,53 @@
+<PROJECT>
+    <NAME>MerchanManager</NAME>
+    <CLASS>
+        <NAME>AccesDataFromDB.java</NAME>
+        <METHOD_LIST>
+            <METHOD>
+                <NAME>getLegalCommerce_Q1</NAME>
+                <QUERY>
+                    <VALUE>
+                        SELECT SA.SLCTUD_ID, SA.ESTSLC_ID, SA.TPOAFL_ID, COM.COMER_DIRECCION, COM.CIUDAD_ID, COM.COMER_TELEFONO, COM.COMER_CELULAR, COM.COMER_EMAIL, COM.ACTECO_ID, COM.ACTMCC_ID, COM.BANCO_ID, COM.TPOCTA_ID, COM.COMER_NUMEROCUENTA, COM.COMER_TITULARCUENTA, COM.COMER_TPOIDETITULARCUENTA, COM.COMER_IDETITULARCUENTA, COM.COMER_INGRESOSMES, COM.COMER_TOTALACTIVOS, COM.COMER_EGRESOSMES, COM.COMER_TOTALPASIVOS, CJ.COMJUR_NUMERONIT, CJ.COMJUR_NITDIGITOVERIFICACION, CJ.COMJUR_RAZONSOCIAL, CJ.COMJUR_NOMBRECOMERCIAL, CJ.TPOEMPCAP_ID, CJ.TPOEMPCON_ID, CJ.TPOEMPCON_OTRA, CJ.COMJUR_EMPEXTRANJERA, CJ.COMJUR_ENCAMARACOMERCIO, CJ.COMJUR_MATRICULAMERCANTIL, CJ.COMJUR_FECHACONSTITUCION, CJ.COMJUR_FECHACERTIFICADO
+                        FROM SOLICITUD_ADQUIRENCIA SA
+                        LEFT JOIN COMERCIO COM ON (COM.COMER_ID = SA.COMER_ID AND TPONAT_ID = 1)
+                        LEFT JOIN COMERCIO_JURIDICA CJ ON (SA.COMER_ID = CJ.COMER_ID)
+                        WHERE CJ.COMJUR_NUMERONIT = ?
+                    </VALUE>
+                </QUERY>
+            </METHOD>
+            <METHOD>
+                <NAME>getLegalCommerce_Q2</NAME>
+                <QUERY>
+                    <VALUE>
+                        SELECT GRPPRD_ID
+                        FROM GRUPO_PRODUCTO_SOLICITUD
+                        WHERE SLCTUD_ID = ?
+                    </VALUE>
+                </QUERY>
+            </METHOD>
+            <METHOD>
+                <NAME>getLegalCommerce_Q3</NAME>
+                <QUERY>
+                    <VALUE>
+                        SELECT TECADQ_ID
+                        FROM TECNOLOGIA_SOLICITUD
+                        WHERE SLCTUD_ID = ?
+                    </VALUE>
+                </QUERY>
+            </METHOD>
+            <METHOD>
+                <NAME>getLegalCommerce_Q4</NAME>
+                <QUERY>
+                    <VALUE>
+                        SELECT CON.TPOIDE_ID, CON.CONTAC_NUMEROIDENTIFICACION, CON.CONTAC_FECHAEXPEDICION, CON.CONTAC_FECHANACIMIENTO, CON.CONTAC_CIUDADNACIMIENTO, CON.CONTAC_NOMBRES, CON.CONTAC_APELLIDOS, CON.CONTAC_DIRECCION,
+                        CON.CIUDAD_ID, CON.CONTAC_TELEFONO, CON.CONTAC_CELULAR, CON.CONTAC_EMAIL, CON.CONTAC_RUT
+                        FROM CONTACTO CON
+                        INNER JOIN CONTACTO_COMERCIO CC ON (CC.CONTAC_ID = CON.CONTAC_ID)
+                        INNER JOIN SOLICITUD_ADQUIRENCIA SA ON (SA.COMER_ID = CC.COMER_ID)
+                        WHERE SA.SLCTUD_ID = ?
+                    </VALUE>
+                </QUERY>
+            </METHOD>
+        </METHOD_LIST>
+    </CLASS>
+</PROJECT>

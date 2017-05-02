@@ -1,0 +1,15 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2">
+    <deployment>
+        <dependencies>
+            <module name="com.credibanco.merchantManager.settings"/>
+        </dependencies>
+        <!-- Exclusions allow you to prevent the server from automatically adding some dependencies -->
+        <!-- Se incluye para que los logs no aparezcan en la consola JBoss y esto permita que se agreguen al archivo destinado para los logs -->
+        <exclusions>
+            <module name="org.apache.log4j" />
+        </exclusions>
+        <exclude-subsystems>
+            <subsystem name="jaxrs" />
+        </exclude-subsystems>
+    </deployment>
+</jboss-deployment-structure>
